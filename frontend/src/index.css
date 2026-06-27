@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Prata&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --az-ink: #111111;
+    --az-ink-soft: #2f2f2f;
+    --az-muted: #706b63;
+    --az-subtle: #9a948b;
+    --az-paper: #fbfbfa;
+    --az-surface: #ffffff;
+    --az-surface-warm: #f4f4f1;
+    --az-line: #e3e0da;
+    --az-gold: #b9975b;
+    --az-shadow-xs: 0 6px 18px rgba(17, 17, 17, 0.06);
+    --az-shadow-sm: 0 12px 32px rgba(17, 17, 17, 0.08);
+    --az-shadow-md: 0 24px 70px rgba(17, 17, 17, 0.12);
+    --az-radius-sm: 6px;
+    --az-radius-md: 8px;
+  }
+
+  body {
+    background: var(--az-paper);
+    color: var(--az-ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+  }
+
+  ::selection {
+    background: var(--az-ink);
+    color: var(--az-paper);
+  }
+}
+
+@layer components {
+  .az-icon-button {
+    display: inline-flex;
+    height: 2.3rem;
+    width: 2.3rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(17, 17, 17, 0.06);
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 4px 12px rgba(17, 17, 17, 0.03);
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  }
+
+  .az-icon-button:hover {
+    transform: translateY(-1px);
+    border-color: rgba(17, 17, 17, 0.14);
+    background: #ffffff;
+    box-shadow: 0 8px 24px rgba(17, 17, 17, 0.06);
+  }
+
+  .az-primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--az-radius-sm);
+    background: var(--az-ink);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: transform 180ms ease, background 180ms ease;
+  }
+
+  .az-primary-button:hover {
+    transform: translateY(-1px);
+    background: #2b2b2b;
+  }
+
+  .az-secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--az-ink);
+    border-radius: var(--az-radius-sm);
+    background: transparent;
+    color: var(--az-ink);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+  }
+
+  .az-secondary-button:hover {
+    transform: translateY(-1px);
+    border-color: rgba(17, 17, 17, 0.42);
+    background: rgba(255, 255, 255, 0.76);
+  }
+
+  .az-panel {
+    border: 1px solid var(--az-line);
+    border-radius: var(--az-radius-md);
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: var(--az-shadow-xs);
+  }
+
+  .az-fade-in {
+    animation: az-fade-in 520ms ease-out both;
+  }
+
+  .az-home-newsletter > section {
+    position: relative;
+    isolation: isolate;
+    max-width: 72rem;
+    overflow: hidden;
+    border: 1px solid rgba(185, 151, 91, 0.22);
+    background: linear-gradient(135deg, #1c1a17 0%, #121110 100%);
+    box-shadow: var(--az-shadow-md);
+  }
+
+  .az-home-newsletter > section::before {
+    content: '';
+    position: absolute;
+    inset: 1rem;
+    z-index: -1;
+    border: 1px solid rgba(185, 151, 91, 0.12);
+    border-radius: var(--az-radius-sm);
+  }
+
+  .az-home-newsletter > section > p {
+    position: relative;
+  }
+
+  .az-home-newsletter form {
+    position: relative;
+    box-shadow: var(--az-shadow-xs);
+  }
+
+  .cm-hero-image {
+    object-position: center 28%;
+    animation: cm-hero-drift 12000ms ease-in-out infinite alternate;
+  }
+}
+
+@keyframes az-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cm-hero-drift {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.028);
+  }
+}
+
+a.active hr{
+    display: block;
+}
+
+* {
+  font-family: Outfit;
+}
+.prata-regular {
+  font-family: "Prata", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--az-paper);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--az-line);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--az-subtle);
+}
+
+/* Premium Form Elements */
+.az-input {
+  width: 100%;
+  border: 1px solid var(--az-line);
+  background-color: var(--az-surface);
+  color: var(--az-ink);
+  border-radius: var(--az-radius-sm);
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+
+.az-input:focus {
+  outline: none;
+  border-color: var(--az-ink);
+  box-shadow: 0 0 0 1px var(--az-ink);
+}
+
+.az-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23111111'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2.25rem;
+}
+
+/* Custom Minimal Checkbox */
+.az-checkbox-wrapper {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+}
+
+.az-checkbox {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--az-line);
+  border-radius: 3px;
+  background-color: var(--az-surface);
+  display: inline-grid;
+  place-content: center;
+  margin-right: 8px;
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.az-checkbox::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--az-paper);
+  background-color: var(--az-paper);
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.az-checkbox:checked {
+  background-color: var(--az-ink);
+  border-color: var(--az-ink);
+}
+
+.az-checkbox:checked::before {
+  transform: scale(1);
+}
+
+.az-checkbox:focus-visible {
+  outline: 2px solid var(--az-ink);
+  outline-offset: 2px;
+}
+
+/* Card hover animation details */
+.az-product-image-container {
+  overflow: hidden;
+  position: relative;
+}
+
+/* Payment Method Card */
+.az-payment-method {
+  border: 1px solid var(--az-line);
+  border-radius: var(--az-radius-sm);
+  padding: 0.875rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: all 180ms ease;
+  background: var(--az-surface);
+}
+
+.az-payment-method:hover {
+  border-color: rgba(17, 17, 17, 0.28);
+  background: var(--az-surface-warm);
+}
+
+.az-payment-method.active {
+  border-color: var(--az-ink);
+  background: var(--az-surface);
+  box-shadow: var(--az-shadow-xs);
+}
+
+.az-radio-dot {
+  min-width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--az-subtle);
+  border-radius: 9999px;
+  position: relative;
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.az-payment-method.active .az-radio-dot {
+  border-color: var(--az-ink);
+}
+
+.az-payment-method.active .az-radio-dot::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  background-color: var(--az-ink);
+  border-radius: 9999px;
+}
+
+@media (max-width: 640px) {
+  .az-home-newsletter > section {
+    background:
+      linear-gradient(180deg, rgba(17, 17, 17, 0.94) 0%, rgba(17, 17, 17, 0.9) 58%, rgba(255, 255, 255, 0.92) 58%, rgba(255, 255, 255, 0.96) 100%),
+      var(--az-surface);
+  }
+
+  .mobile-nav-link.active {
+    background-color: black;
+    color: white;
+  }
+}

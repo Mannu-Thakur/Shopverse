@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Prata&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --adm-ink: #111111;
+    --adm-ink-soft: #2f2f2f;
+    --adm-muted: #6b7280;
+    --adm-line: #e5e7eb;
+    --adm-paper: #f9fafb;
+    --adm-surface: #ffffff;
+    --adm-gold: #b9975b;
+    --adm-accent: #fdf2f8; /* Soft pink accent */
+    --adm-accent-border: #f472b6; /* Pink border */
+    --adm-radius: 6px;
+    --adm-shadow: 0 4px 12px rgba(17, 17, 17, 0.03);
+  }
+
+  body {
+    background-color: var(--adm-paper);
+    color: var(--adm-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+* {
+  font-family: Outfit, sans-serif;
+}
+
+/* Premium Form Elements */
+select, input, textarea {
+  border: 1px solid var(--adm-line);
+  background-color: var(--adm-surface);
+  color: var(--adm-ink);
+  border-radius: var(--adm-radius);
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+  box-shadow: var(--adm-shadow);
+}
+
+select:focus, input:focus, textarea:focus {
+  border-color: var(--adm-ink);
+  box-shadow: 0 0 0 1px var(--adm-ink);
+}
+
+/* Custom Select Dropdown Styling */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23111111'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 0.875rem;
+  padding-right: 2rem;
+}
+
+/* Sidebar Active/Hover links */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border: 1px solid var(--adm-line);
+  border-right-width: 0;
+  padding: 0.625rem 1rem;
+  border-top-left-radius: var(--adm-radius);
+  border-bottom-left-radius: var(--adm-radius);
+  color: var(--adm-ink-soft);
+  font-weight: 500;
+  font-size: 0.875rem;
+  background: var(--adm-surface);
+  transition: all 180ms ease;
+}
+
+.sidebar-link:hover {
+  background-color: var(--adm-paper);
+  color: var(--adm-ink);
+  border-color: rgba(17, 17, 17, 0.18);
+}
+
+.sidebar-link.active {
+  background-color: var(--adm-accent);
+  border-color: var(--adm-accent-border);
+  color: #be185d; /* Darker pink */
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--adm-paper);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--adm-line);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--adm-muted);
+}
