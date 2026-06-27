@@ -270,16 +270,6 @@ VITE_BACKEND_URL=
 - Multi-Vendor Support
 
 ---
-
-# 👨‍💻 Author
-
-**Mannu Kumar Thakur**
-
-Computer Engineering Undergraduate
-
-GitHub:
-https://github.com/Mannu-Thakur
-
----
+ 
 
 ## ⭐ If you like this project, consider giving it a star!
