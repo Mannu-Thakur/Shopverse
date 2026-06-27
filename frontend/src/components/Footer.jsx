@@ -8,7 +8,7 @@ const Footer = () => {
       <div className='grid gap-10 md:grid-cols-[1.5fr_1fr_1fr_1.25fr]'>
         <div className='max-w-sm'>
           <p className='prata-regular text-3xl text-gray-950'>
-            <span className="text-[#D11919]">CHASE</span>MART
+            <span className="text-[#D11919] prata-regular">CHASE</span>MART
           </p>
           <p className='mt-5 leading-7 text-gray-600'>
             CHASEMART curates refined fashion essentials for modern wardrobes,

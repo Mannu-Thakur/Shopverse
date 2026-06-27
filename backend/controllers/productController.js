@@ -1,5 +1,7 @@
 import { v2 as cloudinary } from "cloudinary";
 import productModel from "../models/productModel.js";
+import path from "path";
+import fs from "fs";
 
 const normalizeProduct = (product) => {
     if (!product) {
@@ -38,7 +40,7 @@ const addProduct = async (req, res) => {
         const images = [image1, image2, image3, image4]
             .filter((item) => item !== undefined);
 
-       let imagesUrl = [];
+  let imagesUrl = [];
 
 if (
     process.env.NODE_ENV === "production" ||
@@ -50,11 +52,22 @@ if (
             try {
 
                 console.log("Uploading:", item.path);
-                console.log("Cloud Name:", process.env.CLOUDINARY_NAME);
+                console.log("Cloud Name:", process.env.CLOUDINARY_CLOUD_NAME || process.env.CLOUDINARY_NAME);
                 console.log("Node Env:", process.env.NODE_ENV);
 
+                const absolutePath = path.resolve(item.path);
+
+                console.log("Path:", item.path);
+                console.log("Absolute Path:", absolutePath);
+                console.log("Exists:", fs.existsSync(absolutePath));
+
+                const stats = fs.statSync(absolutePath);
+
+                console.log("Size:", stats.size);
+                console.log("Extension:", path.extname(absolutePath));
+
                 const result = await cloudinary.uploader.upload(
-                    item.path,
+                    absolutePath,
                     {
                         resource_type: "image",
                     }
@@ -67,9 +80,14 @@ if (
             } catch (err) {
 
                 console.log("========== CLOUDINARY ERROR ==========");
-                console.log(err);
+                console.dir(err, { depth: null });
                 console.log("MESSAGE:", err.message);
                 console.log("HTTP:", err.http_code);
+
+                if (err.response) {
+                    console.log("RESPONSE:", err.response);
+                }
+
                 console.log("======================================");
 
                 throw err;
@@ -87,150 +105,140 @@ if (
 
 }
 
-        const isBestseller = bestseller === "true" || bestseller === true;
+const isBestseller = bestseller === "true" || bestseller === true;
 
-        const productData = {
-            name,
-            description,
-            category,
-            price: Number(price),
-            subCategory,
-            bestseller: isBestseller,
-            bestSeller: isBestseller,
-            sizes: JSON.parse(sizes),
-            image: imagesUrl,
-            date: Date.now()
-        };
-
-        console.log(productData);
-
-        const product = new productModel(productData);
-        await product.save();
-
-        res.json({
-            success: true,
-            message: "Product Added"
-        });
-
-    } catch (error) {
-    console.log("========== ERROR ==========");
-    console.log(error);
-    console.log("MESSAGE:", error.message);
-
-    if (error.response) {
-        console.log("RESPONSE:", error.response);
-    }
-
-    if (error.http_code) {
-        console.log("HTTP:", error.http_code);
-    }
-
-    console.log("==========================");
-
-    res.status(500).json({
-        success: false,
-        message: error.message
-    });
-}
+const productData = {
+    name,
+    description,
+    category,
+    price: Number(price),
+    subCategory,
+    bestseller: isBestseller,
+    bestSeller: isBestseller,
+    sizes: JSON.parse(sizes),
+    image: imagesUrl,
+    date: Date.now()
 };
 
- // function for list product
+console.log(productData);
+
+const product = new productModel(productData);
+await product.save();
+
+res.json({
+    success: true,
+    message: "Product Added"
+});
+
+
+// function for list product
 const listProducts = async (req, res) => {
     try {
 
         const products = (await productModel.find({})).map(normalizeProduct);
-        res.json({success:true,products})
+
+        res.json({
+            success: true,
+            products
+        });
 
     } catch (error) {
-    console.log("========== ERROR ==========");
-    console.log(error);
-    console.log("MESSAGE:", error.message);
 
-    if (error.response) {
-        console.log("RESPONSE:", error.response);
+        console.log("========== ERROR ==========");
+        console.log(error);
+        console.log("MESSAGE:", error.message);
+
+        if (error.response) {
+            console.log("RESPONSE:", error.response);
+        }
+
+        if (error.http_code) {
+            console.log("HTTP:", error.http_code);
+        }
+
+        console.log("==========================");
+
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
     }
+};
 
-    if (error.http_code) {
-        console.log("HTTP:", error.http_code);
-    }
 
-    console.log("==========================");
-
-    res.status(500).json({
-        success: false,
-        message: error.message
-    });
-}
-}
-
- // function for removing product
+// function for removing product
 const removeProduct = async (req, res) => {
     try {
 
-        await productModel.findByIdAndDelete(req.body.id)
+        await productModel.findByIdAndDelete(req.body.id);
 
         res.json({
             success: true,
             message: "Product Removed"
-        })
+        });
 
     } catch (error) {
-    console.log("========== ERROR ==========");
-    console.log(error);
-    console.log("MESSAGE:", error.message);
 
-    if (error.response) {
-        console.log("RESPONSE:", error.response);
+        console.log("========== ERROR ==========");
+        console.log(error);
+        console.log("MESSAGE:", error.message);
+
+        if (error.response) {
+            console.log("RESPONSE:", error.response);
+        }
+
+        if (error.http_code) {
+            console.log("HTTP:", error.http_code);
+        }
+
+        console.log("==========================");
+
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
     }
+};
 
-    if (error.http_code) {
-        console.log("HTTP:", error.http_code);
-    }
 
-    console.log("==========================");
-
-    res.status(500).json({
-        success: false,
-        message: error.message
-    });
-}
-}
-
-// function for single product info
 // function for single product info
 const singleProduct = async (req, res) => {
     try {
 
-        const { productId } = req.body
+        const { productId } = req.body;
 
-        const product = normalizeProduct(await productModel.findById(productId))
+        const product = normalizeProduct(
+            await productModel.findById(productId)
+        );
 
         res.json({
             success: true,
             product
-        })
+        });
 
     } catch (error) {
-    console.log("========== ERROR ==========");
-    console.log(error);
-    console.log("MESSAGE:", error.message);
 
-    if (error.response) {
-        console.log("RESPONSE:", error.response);
+        console.log("========== ERROR ==========");
+        console.log(error);
+        console.log("MESSAGE:", error.message);
+
+        if (error.response) {
+            console.log("RESPONSE:", error.response);
+        }
+
+        if (error.http_code) {
+            console.log("HTTP:", error.http_code);
+        }
+
+        console.log("==========================");
+
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
     }
+};
 
-    if (error.http_code) {
-        console.log("HTTP:", error.http_code);
-    }
-
-    console.log("==========================");
-
-    res.status(500).json({
-        success: false,
-        message: error.message
-    });
-}
-}
 export {
     addProduct,
     listProducts,

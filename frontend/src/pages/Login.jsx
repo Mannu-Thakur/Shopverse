@@ -73,7 +73,7 @@ const Login = () => {
             >
 
                 <p className='prata-regular text-2xl tracking-[0.16em] text-gray-950 uppercase'>
-                    <span className="text-[#D11919]">CHASE</span>MART
+                    <span className="text-[#D11919] prata-regular">CHASE</span>MART
                 </p>
 
                 <div className='inline-flex items-center gap-2 mb-8 mt-6'>

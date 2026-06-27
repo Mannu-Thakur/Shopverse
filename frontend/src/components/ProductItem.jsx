@@ -81,7 +81,7 @@ const ProductItem = ({
                         <div className='flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#f8f7f4_0%,#efebe4_100%)] px-4 text-center'>
                             <div>
                                 <p className='prata-regular text-2xl text-gray-950 sm:text-3xl'>
-                                    <span className="text-[#D11919]">CHASE</span>MART
+                                    <span className="text-[#D11919] prata-regular">CHASE</span>MART
                                 </p>
                                 <p className='mt-3 text-[9px] font-semibold uppercase tracking-[0.2em] text-gray-400'>Image pending</p>
                             </div>

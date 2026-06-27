@@ -48,7 +48,7 @@ const Navbar = () => {
           className='flex flex-col items-center sm:items-start hover:opacity-90 transition-opacity duration-300'
         >
           <span className='prata-regular text-2xl tracking-[0.14em] leading-none text-gray-950 sm:text-[25px]'>
-            <span className="text-[#D11919]">CHASE</span>MART
+            <span className="text-[#D11919] prata-regular">CHASE</span>MART
           </span>
           <svg className="w-[100px] h-[10px] sm:w-[110px] sm:h-[11px] mt-1.5" viewBox="0 0 120 12" fill="none">
             <path d="M 5,4.5 L 35,4.5 C 37,4.5 38,2 41,2 L 112,2 C 114,2 115,3.5 115,6 C 115,8.5 114,10 112,10 L 41,10 C 38,10 37,7.5 35,7.5 L 5,7.5 C 4,7.5 3.5,7 3.5,6 C 3.5,5 4,4.5 5,4.5 Z" fill="#D4AF37" />
@@ -184,7 +184,7 @@ const Navbar = () => {
             className='flex items-center justify-between border-b border-gray-100 px-6 h-[88px] cursor-pointer'
           >
             <p className='prata-regular text-2xl text-gray-950'>
-              <span className="text-[#D11919]">CHASE</span>MART
+              <span className="text-[#D11919] prata-regular">CHASE</span>MART
             </p>
             <div className='flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gray-400'>
               <img src={assets.dropdown_icon} className='h-3 rotate-180 opacity-60' alt='' />
