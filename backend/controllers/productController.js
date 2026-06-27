@@ -122,14 +122,36 @@ const productData = {
 
 console.log(productData);
 
-const product = new productModel(productData);
-await product.save();
+        const product = new productModel(productData);
+        await product.save();
 
-res.json({
-    success: true,
-    message: "Product Added"
-});
+        res.json({
+            success: true,
+            message: "Product Added"
+        });
 
+    } catch (error) {
+
+        console.log("========== ERROR ==========");
+        console.log(error);
+        console.log("MESSAGE:", error.message);
+
+        if (error.response) {
+            console.log("RESPONSE:", error.response);
+        }
+
+        if (error.http_code) {
+            console.log("HTTP:", error.http_code);
+        }
+
+        console.log("==========================");
+
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+};
 
 // function for list product
 const listProducts = async (req, res) => {
