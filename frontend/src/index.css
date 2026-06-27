@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Prata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@100..900&family=Prata&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -20,6 +20,12 @@
     --az-shadow-md: 0 24px 70px rgba(17, 17, 17, 0.12);
     --az-radius-sm: 6px;
     --az-radius-md: 8px;
+
+    --cm-luxury-bg: #0F0F10;
+    --cm-luxury-text: #F5F5F5;
+    --cm-luxury-paragraph: #BEBEBE;
+    --cm-luxury-accent: #D4AF37;
+    --cm-ease: cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   body {
@@ -328,4 +334,16 @@ a.active hr{
     background-color: black;
     color: white;
   }
+}
+
+.font-luxury-serif {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.font-premium-sans {
+  font-family: 'Inter', sans-serif;
+}
+
+.cm-transition {
+  transition: all 400ms var(--cm-ease);
 }

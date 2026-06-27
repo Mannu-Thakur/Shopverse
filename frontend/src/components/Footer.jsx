@@ -7,7 +7,9 @@ const Footer = () => {
     <footer className='mt-28 border-t border-[#e3e0da] pt-14 text-sm text-gray-600 sm:mt-40'>
       <div className='grid gap-10 md:grid-cols-[1.5fr_1fr_1fr_1.25fr]'>
         <div className='max-w-sm'>
-          <p className='prata-regular text-3xl text-gray-950'>CHASEMART</p>
+          <p className='prata-regular text-3xl text-gray-950'>
+            <span className="text-[#D11919]">CHASE</span>MART
+          </p>
           <p className='mt-5 leading-7 text-gray-600'>
             CHASEMART curates refined fashion essentials for modern wardrobes,
             pairing considered design with a seamless shopping experience.
