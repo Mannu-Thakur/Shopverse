@@ -257,7 +257,11 @@ VITE_BACKEND_URL=
 | Images | Cloudinary |
 
 ---
+## 🔗 Live Links
 
+- **Frontend (Customer Store)**: [https://chasemart-store.vercel.app](https://chasemart-store.vercel.app)
+- **Admin Dashboard**: [https://chasemart-admin.vercel.app](https://chasemart-admin.vercel.app)
+- **Backend API**: [https://chasemart-backend.onrender.com](https://chasemart-backend.onrender.com)
 # 📈 Future Improvements
 
 - Wishlist
